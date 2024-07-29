@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Notes.Domain.Models;
+namespace Notes.DB.Entity;
 
 public partial class User
 {

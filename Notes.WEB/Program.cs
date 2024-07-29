@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Notes.DB;
-using Notes.Domain.Stores;
+using Notes.DB.Repository;
+using Notes.Domain.Services;
+
 namespace Notes.WEB
 {
     public class Program
@@ -11,7 +13,9 @@ namespace Notes.WEB
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddSingleton<INoteStore, NoteRepository>();
+            builder.Services.AddDbContext<NotesDbContext>();
+            builder.Services.AddScoped<IUserRepository,UserRepository>();
+            builder.Services.AddScoped<IUserService,UserService>();
 
             var app = builder.Build();
 

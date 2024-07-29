@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Notes.Domain;
-using Notes.Domain.Models;
+using Notes.DB.Entity;
 
 namespace Notes.DB;
 
 public partial class NotesDbContext : DbContext
 {
+
     public NotesDbContext()
     {
     }

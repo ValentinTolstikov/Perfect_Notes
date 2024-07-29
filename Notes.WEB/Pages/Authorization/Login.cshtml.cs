@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Notes.Domain.Stores;
+using Notes.Domain.Services;
 
 namespace Notes.WEB.Pages.Authorization
 {
     public class LoginModel : PageModel
     {
-        public INoteStore _NoteStore;
+        private IUserService _userService;
 
-        public LoginModel(INoteStore noteStore)
+        public LoginModel(IUserService userService)
         {
-            _NoteStore = noteStore;
+            _userService = userService;
         }
 
         public void OnGet()
