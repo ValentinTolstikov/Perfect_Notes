@@ -1,0 +1,117 @@
+@font-face {
+    font-family: inter;
+    src: url('/fonts/Inter-SemiBold.otf') format("truetype");
+}
+
+@font-face {
+    font-family: inter-light;
+    src: url('/fonts/Inter-Light.otf') format("truetype");
+}
+
+
+border-shadow {
+    box-shadow: 0px 0px 10px 1px gray;
+}
+
+.container {
+    display: block;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(90deg, rgba(0,174,255,1) 0%, rgba(0,240,255,1) 100%);
+}
+
+.form {
+    background-color: white;
+    padding: 5px;
+    height: auto;
+    width: 400px;
+    display: block;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25vh;
+}
+
+.SemiBold40 {
+    font-size: 40px;
+    font-family: 'inter', FallBack, sans-serif;
+    font-weight: 600;
+}
+
+.button:hover {
+    background: linear-gradient(90deg, rgba(0,174,255,0.5) 0%, rgba(0,240,255,0.5) 100%);
+}
+
+.input {
+    height: 60px;
+    width: 316px;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    font-family: 'inter-light', FallBack, sans-serif;
+    font-weight: 100;
+}
+
+.m20 {
+    margin-bottom: 10px;
+}
+
+.remember-pas {
+    text-align: start;
+    margin-left: 40px;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #01B5FF;
+    font-family: 'inter-light', FallBack, sans-serif;
+    font-weight: 100;
+}
+
+.button {
+    margin-left: 20px;
+    width: 340px;
+    height: 60px;
+    border: none;
+    border-radius: 8px;
+    margin-right: 20px;
+    background: linear-gradient(90deg, rgba(0,174,255,1) 0%, rgba(0,240,255,1) 100%);
+}
+
+.fl {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.m5 {
+    margin-left: 5px;
+}
+
+.mb5 {
+    margin-bottom: 15px;
+}
+
+.b24 {
+    font-size: 28px;
+    font-family: 'inter', FallBack, sans-serif;
+    font-weight: 600;
+}
+
+.f16 {
+    font-family: 'inter-light', FallBack, sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.blue {
+    color: #01B5FF;
+}
