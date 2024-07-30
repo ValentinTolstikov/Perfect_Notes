@@ -16,7 +16,7 @@ border-shadow {
 .container {
     display: block;
     min-height: 100%;
-    min-width: 100%;
+    min-width: 80%;
     overflow: hidden;
     align-items: center;
     text-align: center;
@@ -27,7 +27,7 @@ border-shadow {
     background-color: white;
     padding: 5px;
     height: auto;
-    width: 400px;
+    width: 380px;
     display: block;
     border-radius: 8px;
     margin-left: auto;
