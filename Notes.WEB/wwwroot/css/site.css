@@ -1,11 +1,11 @@
 @font-face {
     font-family: inter;
-    src: url('/fonts/Inter-SemiBold.otf') format("truetype");
+    src: url('fonts/Inter-SemiBold') format("truetype");
 }
 
 @font-face {
     font-family: inter-light;
-    src: url('/fonts/Inter-Light.otf') format("truetype");
+    src: url('fonts/Inter-Light.otf') format("truetype");
 }
 
 
@@ -16,18 +16,23 @@ border-shadow {
 .container {
     display: block;
     min-height: 100%;
-    min-width: 80%;
+    min-width: auto;
     overflow: hidden;
     align-items: center;
     text-align: center;
     background: linear-gradient(90deg, rgba(0,174,255,1) 0%, rgba(0,240,255,1) 100%);
 }
 
+.form-container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .form {
     background-color: white;
     padding: 5px;
     height: auto;
-    width: 380px;
+    width: 300px;
     display: block;
     border-radius: 8px;
     margin-left: auto;
@@ -36,22 +41,16 @@ border-shadow {
 }
 
 .SemiBold40 {
-    font-size: 40px;
+    font-size: 32px;
     font-family: 'inter', FallBack, sans-serif;
     font-weight: 600;
 }
 
-.button:hover {
-    background: linear-gradient(90deg, rgba(0,174,255,0.5) 0%, rgba(0,240,255,0.5) 100%);
-}
-
 .input {
-    height: 60px;
-    width: 316px;
+    box-sizing: border-box;
+    height: 40px;
     padding-left: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    font-size: 20px;
+    font-size: medium;
     border: 1px solid gray;
     border-radius: 8px;
     font-family: 'inter-light', FallBack, sans-serif;
@@ -64,8 +63,8 @@ border-shadow {
 
 .remember-pas {
     text-align: start;
-    margin-left: 40px;
-    font-size: 16px;
+    margin-left: 12px;
+    font-size: 14px;
     margin-top: 5px;
     margin-bottom: 5px;
     color: #01B5FF;
@@ -74,14 +73,17 @@ border-shadow {
 }
 
 .button {
-    margin-left: 20px;
-    width: 340px;
-    height: 60px;
+    width: 100%;
+    height: 40px;
     border: none;
     border-radius: 8px;
-    margin-right: 20px;
     background: linear-gradient(90deg, rgba(0,174,255,1) 0%, rgba(0,240,255,1) 100%);
 }
+
+    .button:hover {
+        color: rgb(176, 176, 176);
+        background: linear-gradient(90deg, rgba(0,174,255,0.5) 0%, rgba(0,240,255,0.5) 100%);
+    }
 
 .fl {
     display: flex;
@@ -101,14 +103,14 @@ border-shadow {
 }
 
 .b24 {
-    font-size: 28px;
-    font-family: 'inter', FallBack, sans-serif;
+    font-size: 20px;
+    font-family: 'inter-light', FallBack, sans-serif;
     font-weight: 600;
 }
 
 .f16 {
     font-family: 'inter-light', FallBack, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 100;
 }
 

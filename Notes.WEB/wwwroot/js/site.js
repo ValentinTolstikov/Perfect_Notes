@@ -1,4 +1,10 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const remember_pas = document.getElementById('remember_pas');
+const register = document.getElementById('register');
+  
+register.addEventListener('click', function reg() {
+    window.location.href = 'register';
+});
 
-// Write your JavaScript code.
+remember_pas.addEventListener('click', function reg() {
+    window.location.href = 'rememberpas';
+});
