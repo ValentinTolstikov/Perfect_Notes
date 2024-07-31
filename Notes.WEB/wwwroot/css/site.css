@@ -50,7 +50,7 @@ border-shadow {
     box-sizing: border-box;
     height: 40px;
     padding-left: 20px;
-    font-size: medium;
+    font-size: 16px;
     border: 1px solid gray;
     border-radius: 8px;
     font-family: 'inter-light', FallBack, sans-serif;
