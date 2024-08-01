@@ -1,0 +1,42 @@
+﻿@page "/register"
+@model Notes.WEB.Pages.Authorization.RegisterModel
+@{
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="~/css/site.css" rel="stylesheet" />
+        <link href="~/css/fonts/Inter-Bold.otf" rel="fonts" />
+        <title>Регистрация</title>
+    </head>
+    <body class="container">
+        <form class="form">
+            <div class="form-container">
+                <h1 class="SemiBold40">Регистрация</h1>
+                <div class="dv">
+                    <input required class="input m20" placeholder="Почта" type="email" />
+                </div>
+                <div class="dv">
+                    <input required class="input m20" placeholder="Возраст" type="number" />
+                </div>
+                <div class="dv">
+                    <input required class="input mb5" placeholder="Логин" type="text" />
+                </div>
+                <div class="dv">
+                    <input required id="passw" class="input m20" placeholder="Пароль" type="password" />
+                </div>
+                <div class="dv">
+                    <input required id="passw_repeat" class="input mb5" placeholder="Повтор пароля" type="password" />
+                </div>
+                <button id="btn_reg" class="b24 button">Регистрация</button>
+                <div class="fl">
+                    <h3 class="f16">Уже есть аккаунт?</h3>
+                    <h3 id="login" class="m5 f16 blue">Войти</h3>
+                </div>
+                <script src="~/js/registration_script.js"></script>
+            </div>
+        </form>
+    </body>
+    </html>
+}

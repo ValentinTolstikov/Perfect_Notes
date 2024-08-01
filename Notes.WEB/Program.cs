@@ -11,8 +11,7 @@ namespace Notes.WEB
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddRazorPages();
+            builder.Services.AddRazorPages(); 
             builder.Services.AddDbContext<NotesDbContext>();
             builder.Services.AddScoped<IUserRepository,UserRepository>();
             builder.Services.AddScoped<IUserService,UserService>();
