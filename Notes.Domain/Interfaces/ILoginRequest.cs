@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Notes.Domain.DTO
+namespace Notes.Domain.Interfaces
 {
-    public class LoginRequestDTO
+    public interface ILoginRequest
     {
-        public string Login {  get; set; }
+        public string Login { get; set; } 
         public string Password { get; set; }
     }
 }

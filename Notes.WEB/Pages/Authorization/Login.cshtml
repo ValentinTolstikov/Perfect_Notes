@@ -12,19 +12,22 @@
     </head>
     <body class="container">
         <form class="form">
+            @Html.AntiForgeryToken()
             <div class="form-container">
                 <h1 class="SemiBold40">Вход</h1>
                 <div>
-                    <input required class="input m20" placeholder="Логин" type="text" />
+                    <input id="Login" required class="input m20" placeholder="Логин" type="text" />
                 </div>
                 <div>
-                    <input required minlength="8" class="input" placeholder="Пароль" type="password" />
+                    <input id="Password" required minlength="8" class="input" placeholder="Пароль" type="password" />
                 </div>
-                <h3 id="remember_pas" class="remember-pas mb5">Забыли пароль?</h3>
-                <button class="b24 button">Войти</button>
+                <h3 id="remember_pas" class="remember-pas mb5">
+                Забыли пароль?
+                </h3>
+                <button type="submit" formmethod="post" class="b24 button">Войти</button>
                 <div class="fl">
                     <h3 class="f16">Нет аккаунта?</h3>
-                    <h3 id="register" class="m5 f16 blue">Регистрация</h3>
+                    <h3 id="register" cursor class="m5 f16 blue">Регистрация</h3>
                 </div>
             </div>
         </form>

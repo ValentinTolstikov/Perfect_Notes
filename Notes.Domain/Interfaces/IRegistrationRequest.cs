@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Notes.Domain.DTO
+namespace Notes.Domain.Interfaces
 {
-    public class RegistrationRequestDTO
+    public interface IRegistrationRequest
     {
         public string Name { get; set; }
 

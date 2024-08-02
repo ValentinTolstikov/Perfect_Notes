@@ -1,4 +1,4 @@
-﻿using Notes.Domain.DTO;
+﻿using Notes.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +9,8 @@ namespace Notes.Domain.Services
 {
     public interface IUserService
     {
-        public Task Login(LoginRequestDTO loginRequest);
+        public Task Login(ILoginRequest loginRequest);
         public void Logout();
-        public Task<int> Register(RegistrationRequestDTO registrationRequest);
+        public Task<int> Register(IRegistrationRequest registrationRequest);
     }
 }

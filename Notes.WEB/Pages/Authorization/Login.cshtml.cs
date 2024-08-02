@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Notes.Domain.Services;
+using Notes.WEB.DTO;
 
 namespace Notes.WEB.Pages.Authorization
 {
+    [ValidateAntiForgeryToken]
     public class LoginModel : PageModel
     {
-        private IUserService _userService;
+        private readonly IUserService _userService;
 
         public LoginModel(IUserService userService)
         {
@@ -17,5 +19,10 @@ namespace Notes.WEB.Pages.Authorization
         {
 
         }
+
+        public void OnPost(LoginRequestDTO request) 
+        {
+            
+        }    
     }
 }

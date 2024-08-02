@@ -71,6 +71,8 @@ border-shadow {
     color: #01B5FF;
     font-family: 'inter-light', FallBack, sans-serif;
     font-weight: 100;
+    cursor: default;
+    text-decoration:underline;
 }
 
 .button {
@@ -117,4 +119,6 @@ border-shadow {
 
 .blue {
     color: #01B5FF;
+    cursor: default;
+    text-decoration: underline;
 }

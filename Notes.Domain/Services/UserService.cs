@@ -1,10 +1,5 @@
 ﻿using Notes.DB.Repository;
-using Notes.Domain.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Notes.Domain.Interfaces;
 
 namespace Notes.Domain.Services
 {
@@ -17,7 +12,7 @@ namespace Notes.Domain.Services
             _userRepository = userRepository;
         }
 
-        public Task Login(LoginRequestDTO loginRequest)
+        public Task Login(ILoginRequest loginRequest)
         {
             throw new NotImplementedException();
         }
@@ -27,7 +22,7 @@ namespace Notes.Domain.Services
             throw new NotImplementedException();
         }
 
-        public Task<int> Register(RegistrationRequestDTO registrationRequest)
+        public Task<int> Register(IRegistrationRequest registrationRequest)
         {
             throw new NotImplementedException();
         }
