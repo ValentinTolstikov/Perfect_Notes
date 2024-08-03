@@ -5,7 +5,8 @@ namespace Notes.Domain.Services
 {
     public interface IUserService
     {
-        public User? AuthUser(ILoginRequest request);
-        public Task<int> RegisterUser(IRegistrationRequest request);
+        public Task AuthUser(ILoginRequest request);
+        public Task Logout();
+        public Task RegisterUser(IRegistrationRequest request);
     }
 }

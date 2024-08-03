@@ -15,12 +15,10 @@ namespace Notes.WEB.Pages.Authorization
     public class LoginModel : PageModel
     {
         private readonly IUserService _userService;
-        private readonly IHttpContextAccessor _context;
 
-        public LoginModel(IUserService userService, IHttpContextAccessor context)
+        public LoginModel(IUserService userService)
         {
             _userService = userService;
-            _context = context;
         }
 
         public void OnGet()
@@ -32,32 +30,22 @@ namespace Notes.WEB.Pages.Authorization
         {
             if (ModelState.IsValid)
             {
-                User? user = _userService.AuthUser(request);
-                if (user != null)
+                try
                 {
-                    await Authenticate(request.Login); // аутентификация
+                    await _userService.AuthUser(request);
                     return Redirect("/Main/MainPage");
                 }
-                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
-                ViewData.Add("err","Неверный логин или пароль");
+                catch (Exception ex)
+                {
+                    ViewData["err"] = ex.Message;
+                    return Page();
+                }
             }
-            return Page();
-        }
-
-        private async Task Authenticate(string userName)
-        {
-            var claims = new List<Claim>
+            else
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
-            };
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
-        }
-
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return Redirect("/login");
+                ViewData["err"] = "Всему пиздец";
+                return Page();
+            }
         }
     }
 }

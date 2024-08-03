@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.EntityFrameworkCore;
 using Notes.DB.Entity;
 using Notes.DB.Repository;
 using Notes.Domain.Interfaces;
 using System.Net.Http;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Notes.Domain.Exceptions;
 
 namespace Notes.Domain.Services
 {
@@ -11,21 +14,36 @@ namespace Notes.Domain.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IEncryptionService _encryption;
+        private readonly Microsoft.AspNetCore.Http.IHttpContextAccessor _context;
 
-        public UserService(IUserRepository userRepository,IEncryptionService encryption)
+        public UserService(IUserRepository userRepository,IEncryptionService encryption, Microsoft.AspNetCore.Http.IHttpContextAccessor context)
         {
             _userRepository = userRepository;
             _encryption = encryption;
+            _context = context;
         }
 
-        public User? AuthUser(ILoginRequest request)
+        public Task AuthUser(ILoginRequest request)
         {
             string hashedPassword = _encryption.EncryptValue(request.Password);
             User user = _userRepository.Login(request.Login,hashedPassword);
-            return user;
+            if (user != null)
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, request.Login)
+                };
+
+                ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+                return _context.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+            }
+            else
+            {
+                throw new UserNotFoundExceprion("Пользователь не найден");
+            }
         }
 
-        public async Task<int> RegisterUser(IRegistrationRequest request)
+        public async Task RegisterUser(IRegistrationRequest request)
         {
             User user = new User();
             if (_userRepository.IsUserUnique(request.Login))
@@ -36,13 +54,17 @@ namespace Notes.Domain.Services
                 user.Name = request.Name;
                 user.Age = request.Age;
                 user.HashedPassword = _encryption.EncryptValue(request.Password);
-
-                return await _userRepository.Create(user);
+                await _userRepository.Create(user);
             }
             else
             {
-                return -1;
+                throw new UserNotUniqueException("Имя пользователя должно быть уникальным");
             }
+        }
+
+        public Task Logout()
+        {
+            return _context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
     }
 }

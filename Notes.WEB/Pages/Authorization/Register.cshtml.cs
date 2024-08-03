@@ -27,18 +27,21 @@ namespace Notes.WEB.Pages.Authorization
         {
             if (ModelState.IsValid)
             {
-                int res = await _userService.RegisterUser(model);
-                if (res > 0)
+                try
                 {
+                    await _userService.RegisterUser(model);
                     return Redirect("/login");
                 }
-                else
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
-                    ViewData.Add("err", "Логин занят, попробуйте другой");
+                    ViewData.Add("err", ex.Message);
+                    return Page();
                 }
             }
-            return Page();
+            else
+            {
+                return Page();
+            }
         }
     }
 }
