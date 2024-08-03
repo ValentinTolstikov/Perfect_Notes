@@ -1,16 +1,11 @@
-﻿using Notes.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Notes.DB.Entity;
+using Notes.Domain.Interfaces;
 
 namespace Notes.Domain.Services
 {
     public interface IUserService
     {
-        public Task Login(ILoginRequest loginRequest);
-        public void Logout();
-        public Task<int> Register(IRegistrationRequest registrationRequest);
+        public User? AuthUser(ILoginRequest request);
+        public Task<int> RegisterUser(IRegistrationRequest request);
     }
 }

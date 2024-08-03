@@ -24,7 +24,7 @@ public partial class NotesDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-CO6H50E\\SQLEXPRESS;Initial Catalog=NotesDB;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=PerfectNotesDB.mssql.somee.com;Initial Catalog=PerfectNotesDB;User ID=valentin123_SQLLogin_1;Password=estwezikiv;Encrypt=False;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

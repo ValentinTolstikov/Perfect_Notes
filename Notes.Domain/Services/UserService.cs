@@ -1,30 +1,48 @@
-﻿using Notes.DB.Repository;
+﻿using Microsoft.AspNetCore.Http;
+using Notes.DB.Entity;
+using Notes.DB.Repository;
 using Notes.Domain.Interfaces;
+using System.Net.Http;
+using System.Security.Claims;
 
 namespace Notes.Domain.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IEncryptionService _encryption;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository,IEncryptionService encryption)
         {
             _userRepository = userRepository;
+            _encryption = encryption;
         }
 
-        public Task Login(ILoginRequest loginRequest)
+        public User? AuthUser(ILoginRequest request)
         {
-            throw new NotImplementedException();
+            string hashedPassword = _encryption.EncryptValue(request.Password);
+            User user = _userRepository.Login(request.Login,hashedPassword);
+            return user;
         }
 
-        public void Logout()
+        public async Task<int> RegisterUser(IRegistrationRequest request)
         {
-            throw new NotImplementedException();
-        }
+            User user = new User();
+            if (_userRepository.IsUserUnique(request.Login))
+            {
+                user.Login = request.Login;
+                user.Email = request.Email;
+                user.Surname = request.Surname;
+                user.Name = request.Name;
+                user.Age = request.Age;
+                user.HashedPassword = _encryption.EncryptValue(request.Password);
 
-        public Task<int> Register(IRegistrationRequest registrationRequest)
-        {
-            throw new NotImplementedException();
+                return await _userRepository.Create(user);
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

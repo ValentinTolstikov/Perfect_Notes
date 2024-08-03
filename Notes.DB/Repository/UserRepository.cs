@@ -37,7 +37,7 @@ namespace Notes.DB.Repository
             return _context.Users.Where(u=>u.Login==username).Count() == 0;
         }
 
-        public User Login(string username, string hashed_password)
+        public User? Login(string username, string hashed_password)
         {
             return _context.Users.FirstOrDefault(u => u.Login == username && u.HashedPassword == hashed_password);
         }

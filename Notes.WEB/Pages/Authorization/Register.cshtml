@@ -12,24 +12,32 @@
     </head>
     <body class="container">
         <form class="form">
+            @Html.AntiForgeryToken()
             <div class="form-container">
                 <h1 class="SemiBold40">Регистрация</h1>
                 <div class="dv">
-                    <input required class="input m20" placeholder="Почта" type="email" />
+                    <input required name="Name" class="input m20" placeholder="Имя" type="tel" />
                 </div>
                 <div class="dv">
-                    <input required class="input m20" placeholder="Возраст" type="number" />
+                    <input required name="Surname" class="input m20" placeholder="Фамилия" type="text" />
                 </div>
                 <div class="dv">
-                    <input required class="input mb5" placeholder="Логин" type="text" />
+                    <input required name="Email" class="input m20" placeholder="Почта" type="email" />
                 </div>
                 <div class="dv">
-                    <input required id="passw" class="input m20" placeholder="Пароль" type="password" />
+                    <input required name="Age" class="input m20" placeholder="Возраст" type="number" />
                 </div>
                 <div class="dv">
-                    <input required id="passw_repeat" class="input mb5" placeholder="Повтор пароля" type="password" />
+                    <input required name="Login" class="input mb5" placeholder="Логин" type="text" />
                 </div>
-                <button id="btn_reg" class="b24 button">Регистрация</button>
+                <div class="dv">
+                    <input required name="Password" id="passw" minlength="6" class="input m20" placeholder="Пароль" type="password" />
+                </div>
+                <div class="dv">
+                    <input required id="passw_repeat" minlength="6" class="input mb5" placeholder="Повтор пароля" type="password" />
+                </div>
+                <button id="btn_reg" type="submit" formmethod="post" class="b24 button">Регистрация</button>
+                <h5 class="red">@ViewData["err"]</h5>
                 <div class="fl">
                     <h3 class="f16">Уже есть аккаунт?</h3>
                     <h3 id="login" class="m5 f16 blue">Войти</h3>
